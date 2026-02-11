@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ia on NodeDatos</title>
+    <link>http://localhost:1313/tags/ia/</link>
+    <description>Recent content in Ia on NodeDatos</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>es-es</language>
+    <lastBuildDate>Wed, 11 Feb 2026 10:00:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bienvenida a NodeDatos</title>
+      <link>http://localhost:1313/newsletter/2026-02-11-bienvenida/</link>
+      <pubDate>Wed, 11 Feb 2026 10:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/newsletter/2026-02-11-bienvenida/</guid>
+      <description>&lt;h1 id=&#34;bienvenida-a-nodedatos&#34;&gt;Bienvenida a NodeDatos&lt;/h1&gt;
+&lt;p&gt;Esta es la primera newsletter de prueba.&lt;/p&gt;
+&lt;h2 id=&#34;lo-esencial-en-5-puntos&#34;&gt;Lo esencial en 5 puntos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Punto 1 de prueba&lt;/li&gt;
+&lt;li&gt;Punto 2 de prueba&lt;/li&gt;
+&lt;li&gt;Punto 3 de prueba&lt;/li&gt;
+&lt;li&gt;Punto 4 de prueba&lt;/li&gt;
+&lt;li&gt;Punto 5 de prueba&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,62 @@
+baseURL = "https://www.nodedatos.es/"
+title = "NodeDatos"
+theme = "PaperMod"
+
+languageCode = "es-es"
+defaultContentLanguage = "es"
+
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+  path = "page"
+  disableAliases = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"] # necesario para el buscador de PaperMod
+
+[params]
+  description = "Inteligencia artificial, cada semana, sin hype."
+  author = "Pablo Beret"
+
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+
+  mainSections = ["newsletter"]
+
+[params.homeInfoParams]
+  Title = "NodeDatos"
+  Content = "Inteligencia artificial, cada semana, sin hype.\n\nPróximamente: una newsletter semanal con foco en lo útil."
+
+[[menu.main]]
+  name = "Newsletter"
+  url = "/newsletter/"
+  weight = 10
+
+[[menu.main]]
+  name = "Archivo"
+  url = "/archives/"
+  weight = 20
+
+[[menu.main]]
+  name = "Buscar"
+  url = "/search/"
+  weight = 30
+
+[[menu.main]]
+  name = "Acerca de"
+  url = "/about/"
+  weight = 40
+
+[[params.socialIcons]]
+  name = "rss"
+  url = "index.xml"
+
+[[params.socialIcons]]
+  name = "email"
+  url = "https://buttondown.com/nodedatos"
