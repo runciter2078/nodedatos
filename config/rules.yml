@@ -1,0 +1,97 @@
+# ===========================================
+# PRIORIDADES
+# ===========================================
+priorities:
+  by_tier:
+    1: 10
+    2: 5
+    3: 1
+  by_signal:
+    lanzamiento: 8
+    paper: 7
+    incidente: 9
+    regulacion: 6
+    opinion: 4
+    tutorial: 3
+
+# ===========================================
+# EXCLUSIONES
+# ===========================================
+exclusions:
+  keywords:
+    - "sponsored"
+    - "advertisement"
+    - "job listing"
+    - "hiring"
+    - "webinar registration"
+    - "giveaway"
+  max_age_days: 8
+
+# ===========================================
+# DEDUPLICACION
+# ===========================================
+dedup:
+  method: "url_and_title_hash"
+  title_similarity_threshold: 0.85
+  window_days: 8
+
+# ===========================================
+# LIMITES DE SALIDA
+# ===========================================
+output_limits:
+  max_top_stories: 5
+  max_radar_items: 8
+  max_items_per_section: 4
+  max_total_items: 30
+
+# ===========================================
+# VOCABULARIO DE TAGS
+# ===========================================
+tags:
+  sections:
+    - producto_mercado
+    - investigacion_tecnica
+    - politica_seguridad_sociedad
+    - debate_friccion
+
+  topics:
+    - llm
+    - agentes
+    - rag
+    - regulacion
+    - open_source
+    - vision
+    - robotica
+    - infraestructura
+    - etica
+
+  signals:
+    - lanzamiento
+    - paper
+    - incidente
+    - adquisicion
+    - regulacion
+    - opinion
+    - tutorial
+
+# ===========================================
+# KEYWORDS -> TAGS AUTOMATICOS
+# ===========================================
+keyword_rules:
+  - keywords: ["GPT", "Claude", "Gemini", "Llama", "LLM", "language model"]
+    assign_topic: llm
+  - keywords: ["agent", "agente", "tool use", "function calling"]
+    assign_topic: agentes
+  - keywords: ["RAG", "retrieval", "vector", "embedding"]
+    assign_topic: rag
+  - keywords: ["regulation", "regulacion", "EU AI Act", "GDPR"]
+    assign_topic: regulacion
+    assign_signal: regulacion
+  - keywords: ["open source", "open-source", "Apache 2", "MIT license"]
+    assign_topic: open_source
+  - keywords: ["launch", "release", "announces", "anuncia"]
+    assign_signal: lanzamiento
+  - keywords: ["paper", "arxiv", "research"]
+    assign_signal: paper
+  - keywords: ["breach", "leak", "incident", "hack", "vulnerability"]
+    assign_signal: incidente
