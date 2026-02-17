@@ -1,0 +1,20 @@
+# Hugo build
+web/public/
+web/resources/
+web/.hugo_build.lock
+
+# Datos (no subir contenido, pero sí estructura)
+data/**
+!data/**/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+
+# Windows
+Thumbs.db
+Desktop.ini
