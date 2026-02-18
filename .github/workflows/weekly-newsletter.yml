@@ -1,4 +1,4 @@
-name: Newsletter semanal NodeDatos
+name: Newsletter semanal nodedatos
 
 on:
   schedule:
@@ -11,7 +11,6 @@ permissions:
 jobs:
   generate-newsletter:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,15 +51,23 @@ jobs:
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
         run: python scripts/06_send_email.py
-	- name: Paso 7 - Generar tweets
+
+      - name: Paso 7 - Generar tweets
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/07_generate_tweets.py
 
+      - name: Paso 8 - Guardar tweets como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tweets-semanales
+          path: data/output/tweets_*.txt
+          retention-days: 30
+
       - name: Commit newsletter a la web
         run: |
-          git config user.name "NodeDatos Bot"
+          git config user.name "nodedatos Bot"
           git config user.email "bot@nodedatos.es"
           git add web/content/newsletter/
-          git diff --staged --quiet || git commit -m "Newsletter semanal automática"
+          git diff --staged --quiet || git commit -m "Newsletter semanal automatica"
           git push

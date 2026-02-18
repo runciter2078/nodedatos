@@ -1,13 +1,11 @@
 +++
-title = 'Bienvenida a NodeDatos'
+title = 'Bienvenida a nodedatos'
 date = 2026-02-11T10:00:00+01:00
 draft = false
-tags = ['nodeDatos', 'ia', 'bienvenida']
+tags = ["nodedatos", "ia", "bienvenida"]
 +++
 
-# Bienvenida a NodeDatos
-
-Esta es la primera newsletter de prueba.
+Bienvenida a nodedatos. Esta es la primera newsletter de prueba.
 
 ## Lo esencial en 5 puntos
 

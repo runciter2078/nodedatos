@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>NodeDatos</title>
+    <title>nodedatos</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on NodeDatos</description>
+    <description>Recent content on nodedatos</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>es</language>
-    <copyright>2026 NodeDatos</copyright>
-    <lastBuildDate>Wed, 18 Feb 2026 08:33:41 +0000</lastBuildDate>
+    <copyright>2026 nodedatos</copyright>
+    <lastBuildDate>Wed, 18 Feb 2026 11:15:57 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>NodeDatos - Semana 8, 2026</title>
+      <title>nodedatos - Semana 8, 2026</title>
       <link>http://localhost:1313/newsletter/2026-w08/</link>
-      <pubDate>Wed, 18 Feb 2026 08:33:41 +0000</pubDate>
+      <pubDate>Wed, 18 Feb 2026 11:15:57 +0000</pubDate>
       <guid>http://localhost:1313/newsletter/2026-w08/</guid>
       <description>Newsletter semanal sobre inteligencia artificial</description>
     </item>
     <item>
-      <title>Sobre NodeDatos</title>
+      <title>Sobre nodedatos</title>
       <link>http://localhost:1313/about/</link>
-      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 12 Feb 2026 10:00:00 +0100</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;# Sobre NodeDatos&lt;/p&gt;
-&lt;p&gt;**NodeDatos** es una newsletter semanal sobre inteligencia artificial en español.&lt;/p&gt;
-&lt;p&gt;## ¿Qué encontrarás aquí?&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;nodedatos&lt;/strong&gt; es una newsletter semanal sobre inteligencia artificial en español.&lt;/p&gt;
+&lt;h2 id=&#34;qué-encontrarás-aquí&#34;&gt;¿Qué encontrarás aquí?&lt;/h2&gt;
 &lt;p&gt;Cada lunes analizamos lo más relevante de la semana en IA:&lt;/p&gt;
-&lt;p&gt;- **Análisis editorial**: Opinión fundamentada sobre tendencias y desarrollos&lt;/p&gt;
-&lt;p&gt;- **Lo esencial en 5 puntos**: Las noticias más importantes, sin ruido&lt;/p&gt;
-&lt;p&gt;- **Debates y fricciones**: Las controversias que importan&lt;/p&gt;
-&lt;p&gt;- **Investigación y técnica**: Papers, benchmarks y avances reales&lt;/p&gt;
-&lt;p&gt;- **Política y sociedad**: Regulación, ética e impacto social&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;Análisis editorial&lt;/strong&gt; — Opinión fundamentada sobre tendencias y desarrollos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Lo esencial en 5 puntos&lt;/strong&gt; — Las noticias más importantes, sin ruido.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Debates y fricciones&lt;/strong&gt; — Las controversias que importan.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Investigación y técnica&lt;/strong&gt; — Papers, benchmarks y avances reales.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Política y sociedad&lt;/strong&gt; — Regulación, ética e impacto social.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Bienvenida a NodeDatos</title>
+      <title>Bienvenida a nodedatos</title>
       <link>http://localhost:1313/newsletter/2026-02-11-bienvenida/</link>
       <pubDate>Wed, 11 Feb 2026 10:00:00 +0100</pubDate>
       <guid>http://localhost:1313/newsletter/2026-02-11-bienvenida/</guid>
-      <description>&lt;h1 id=&#34;bienvenida-a-nodedatos&#34;&gt;Bienvenida a NodeDatos&lt;/h1&gt;
-&lt;p&gt;Esta es la primera newsletter de prueba.&lt;/p&gt;
+      <description>&lt;p&gt;Bienvenida a nodedatos. Esta es la primera newsletter de prueba.&lt;/p&gt;
 &lt;h2 id=&#34;lo-esencial-en-5-puntos&#34;&gt;Lo esencial en 5 puntos&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Punto 1 de prueba&lt;/li&gt;
