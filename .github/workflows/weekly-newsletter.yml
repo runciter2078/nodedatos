@@ -2,12 +2,8 @@ name: Newsletter semanal NodeDatos
 
 on:
   schedule:
-    - cron: '0 8 * * 1'   # Lunes 08:00 UTC
+    - cron: '0 8 * * MON'
   workflow_dispatch:
-
-concurrency:
-  group: weekly-newsletter
-  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -20,22 +16,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          fetch-depth: 0
+          submodules: true
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
 
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Crear carpetas de datos
-        run: mkdir -p data/raw data/processed data/output
+          pip install xai-sdk
 
       - name: Paso 1 - Ingestar RSS
         run: python scripts/01_ingest_rss.py
@@ -53,36 +45,18 @@ jobs:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/04_generate.py
 
-      - name: Paso 5 - Publicar en web (Hugo content)
+      - name: Paso 5 - Publicar en web
         run: python scripts/05_publish_web.py
 
-      - name: Paso 6 - Crear borrador en Buttondown
+      - name: Paso 6 - Enviar borrador a Buttondown
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
         run: python scripts/06_send_email.py
 
-      - name: Subir artifacts (debug)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: nodedatos-run
-          path: |
-            data/raw/*.json
-            data/processed/*.json
-            data/output/*.md
-
-      - name: Commit y push de la newsletter a la web
+      - name: Commit newsletter a la web
         run: |
           git config user.name "NodeDatos Bot"
-          git config user.email "actions@users.noreply.github.com"
-
+          git config user.email "bot@nodedatos.es"
           git add web/content/newsletter/
-
-          if git diff --staged --quiet; then
-            echo "Nada que commitear."
-            exit 0
-          fi
-
-          git commit -m "Newsletter semanal automática"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin HEAD:"${GITHUB_REF_NAME}"
+          git diff --staged --quiet || git commit -m "Newsletter semanal automática"
+          git push
