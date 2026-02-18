@@ -52,6 +52,10 @@ jobs:
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
         run: python scripts/06_send_email.py
+	- name: Paso 7 - Generar tweets
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+        run: python scripts/07_generate_tweets.py
 
       - name: Commit newsletter a la web
         run: |

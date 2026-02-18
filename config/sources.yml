@@ -2,6 +2,7 @@
 # FUENTES RSS
 # ===========================================
 rss_sources:
+  # Tier 1 - Esenciales
   - id: the-batch
     name: "The Batch (DeepLearning.AI)"
     feed_url: "https://www.deeplearning.ai/the-batch/feed/"
@@ -32,6 +33,43 @@ rss_sources:
     tier: 1
     default_tags: [investigacion_tecnica, debate]
 
+  - id: import-ai
+    name: "Import AI (Jack Clark)"
+    feed_url: "https://jack-clark.net/feed/"
+    tier: 1
+    default_tags: [investigacion_tecnica, politica_sociedad]
+
+  - id: the-gradient
+    name: "The Gradient"
+    feed_url: "https://thegradient.pub/rss/"
+    tier: 1
+    default_tags: [investigacion_tecnica, debate]
+
+  - id: exponential-view
+    name: "Exponential View (Azeem Azhar)"
+    feed_url: "https://www.exponentialview.co/feed"
+    tier: 1
+    default_tags: [politica_sociedad, producto_mercado]
+
+  - id: ahead-of-ai
+    name: "Ahead of AI (Sebastian Raschka)"
+    feed_url: "https://magazine.sebastianraschka.com/feed"
+    tier: 1
+    default_tags: [investigacion_tecnica]
+
+  - id: deepmind-blog
+    name: "Google DeepMind Blog"
+    feed_url: "https://deepmind.google/blog/rss.xml"
+    tier: 1
+    default_tags: [investigacion_tecnica]
+
+  - id: anthropic-blog
+    name: "Anthropic Blog"
+    feed_url: "https://www.anthropic.com/news/rss.xml"
+    tier: 1
+    default_tags: [investigacion_tecnica, producto_mercado]
+
+  # Tier 2 - Importantes
   - id: huggingface-blog
     name: "Blog de Hugging Face"
     feed_url: "https://huggingface.co/blog/feed.xml"
@@ -50,10 +88,35 @@ rss_sources:
     tier: 2
     default_tags: [producto_mercado, investigacion_tecnica]
 
+  - id: last-week-ai
+    name: "Last Week in AI"
+    feed_url: "https://lastweekin.ai/feed"
+    tier: 2
+    default_tags: [producto_mercado]
+
+  - id: marktechpost
+    name: "MarkTechPost"
+    feed_url: "https://www.marktechpost.com/feed/"
+    tier: 2
+    default_tags: [investigacion_tecnica]
+
+  - id: the-rundown-ai
+    name: "The Rundown AI"
+    feed_url: "https://www.therundown.ai/feed"
+    tier: 2
+    default_tags: [producto_mercado]
+
+  - id: venturebeat-ai
+    name: "VentureBeat AI"
+    feed_url: "https://venturebeat.com/category/ai/feed/"
+    tier: 2
+    default_tags: [producto_mercado]
+
 # ===========================================
 # CUENTAS DE X (via xAI x_search)
 # ===========================================
 x_accounts:
+  # Tier 1 - Imprescindibles
   - id: karpathy
     username: "karpathy"
     name: "Andrej Karpathy"
@@ -62,7 +125,7 @@ x_accounts:
 
   - id: fchollet
     username: "fchollet"
-    name: "Francois Chollet"
+    name: "François Chollet"
     tier: 1
     default_tags: [investigacion_tecnica, debate]
 
@@ -78,8 +141,39 @@ x_accounts:
     tier: 1
     default_tags: [debate, politica_sociedad]
 
+  - id: ylecun
+    username: "ylecun"
+    name: "Yann LeCun"
+    tier: 1
+    default_tags: [investigacion_tecnica, debate]
+
+  - id: jeremyphoward
+    username: "jeremyphoward"
+    name: "Jeremy Howard"
+    tier: 1
+    default_tags: [investigacion_tecnica, open_source]
+
+  # Tier 2 - Importantes
   - id: simonw
     username: "simonw"
     name: "Simon Willison"
     tier: 2
     default_tags: [investigacion_tecnica, open_source]
+
+  - id: drjimfan
+    username: "DrJimFan"
+    name: "Jim Fan"
+    tier: 2
+    default_tags: [investigacion_tecnica, robotica]
+
+  - id: garymarcus
+    username: "GaryMarcus"
+    name: "Gary Marcus"
+    tier: 2
+    default_tags: [debate, politica_sociedad]
+
+  - id: swyx
+    username: "swyx"
+    name: "Shawn Wang"
+    tier: 2
+    default_tags: [producto_mercado]
