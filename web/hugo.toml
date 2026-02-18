@@ -1,37 +1,47 @@
-baseURL = "https://www.nodedatos.es/"
+baseURL = "https://nodedatos.es/"
+languageCode = "es"
 title = "NodeDatos"
 theme = "PaperMod"
-
-languageCode = "es-es"
-defaultContentLanguage = "es"
-
-enableRobotsTXT = true
-
-[pagination]
-  pagerSize = 10
-  path = "page"
-  disableAliases = false
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"] # necesario para el buscador de PaperMod
+copyright = "© 2026 NodeDatos"
 
 [params]
-  description = "Inteligencia artificial, cada semana, sin hype."
-  author = "Pablo Beret"
-
+  description = "Newsletter semanal sobre inteligencia artificial en español"
+  author = "NodeDatos"
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
+  ShowCodeCopyButtons = false
   ShowRssButtonInSectionTermList = true
+  
+  [params.profileMode]
+    enabled = true
+    title = "NodeDatos"
+    subtitle = "Inteligencia artificial, cada semana, sin hype"
+    imageUrl = "/images/logo.jpg"
+    imageWidth = 300
+    imageHeight = 300
+    imageTitle = "NodeDatos Logo"
+    buttons = [
+      { name = "Newsletter", url = "/newsletter/" },
+      { name = "Suscribirse", url = "https://buttondown.com/nodedatos" }
+    ]
 
-  mainSections = ["newsletter"]
+  [[params.socialIcons]]
+    name = "email"
+    url = "https://buttondown.com/nodedatos"
+  
+  [[params.socialIcons]]
+    name = "x"
+    url = "https://x.com/nodedatos"
+  
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
 
-[params.homeInfoParams]
-  Title = "NodeDatos"
-  Content = "Inteligencia artificial, cada semana, sin hype.\n\nPróximamente: una newsletter semanal con foco en lo útil."
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
 [[menu.main]]
   name = "Newsletter"
@@ -39,24 +49,15 @@ enableRobotsTXT = true
   weight = 10
 
 [[menu.main]]
-  name = "Archivo"
-  url = "/archives/"
+  name = "Sobre NodeDatos"
+  url = "/about/"
   weight = 20
 
 [[menu.main]]
-  name = "Buscar"
-  url = "/search/"
+  name = "Suscribirse"
+  url = "https://buttondown.com/nodedatos"
   weight = 30
 
-[[menu.main]]
-  name = "Acerca de"
-  url = "/about/"
-  weight = 40
-
-[[params.socialIcons]]
-  name = "rss"
-  url = "index.xml"
-
-[[params.socialIcons]]
-  name = "email"
-  url = "https://buttondown.com/nodedatos"
+[markup]
+  [markup.highlight]
+    style = "monokai"

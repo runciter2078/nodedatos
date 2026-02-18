@@ -5,9 +5,32 @@
     <link>http://localhost:1313/</link>
     <description>Recent content on NodeDatos</description>
     <generator>Hugo -- 0.155.3</generator>
-    <language>es-es</language>
-    <lastBuildDate>Wed, 11 Feb 2026 10:00:00 +0100</lastBuildDate>
+    <language>es</language>
+    <copyright>2026 NodeDatos</copyright>
+    <lastBuildDate>Wed, 18 Feb 2026 08:33:41 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NodeDatos - Semana 8, 2026</title>
+      <link>http://localhost:1313/newsletter/2026-w08/</link>
+      <pubDate>Wed, 18 Feb 2026 08:33:41 +0000</pubDate>
+      <guid>http://localhost:1313/newsletter/2026-w08/</guid>
+      <description>Newsletter semanal sobre inteligencia artificial</description>
+    </item>
+    <item>
+      <title>Sobre NodeDatos</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;# Sobre NodeDatos&lt;/p&gt;
+&lt;p&gt;**NodeDatos** es una newsletter semanal sobre inteligencia artificial en español.&lt;/p&gt;
+&lt;p&gt;## ¿Qué encontrarás aquí?&lt;/p&gt;
+&lt;p&gt;Cada lunes analizamos lo más relevante de la semana en IA:&lt;/p&gt;
+&lt;p&gt;- **Análisis editorial**: Opinión fundamentada sobre tendencias y desarrollos&lt;/p&gt;
+&lt;p&gt;- **Lo esencial en 5 puntos**: Las noticias más importantes, sin ruido&lt;/p&gt;
+&lt;p&gt;- **Debates y fricciones**: Las controversias que importan&lt;/p&gt;
+&lt;p&gt;- **Investigación y técnica**: Papers, benchmarks y avances reales&lt;/p&gt;
+&lt;p&gt;- **Política y sociedad**: Regulación, ética e impacto social&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Bienvenida a NodeDatos</title>
       <link>http://localhost:1313/newsletter/2026-02-11-bienvenida/</link>
@@ -23,14 +46,6 @@
 &lt;li&gt;Punto 4 de prueba&lt;/li&gt;
 &lt;li&gt;Punto 5 de prueba&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Acerca de</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;NodeDatos es una newsletter semanal sobre IA: lo relevante, sin hype.&lt;/p&gt;
-&lt;p&gt;Suscripción: &lt;a href=&#34;https://buttondown.com/nodedatos&#34;&gt;https://buttondown.com/nodedatos&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
