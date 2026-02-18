@@ -30,9 +30,7 @@ exclusions:
     - "blockchain"
     - "bitcoin"
     - "ethereum"
-  max_age_days: 7  # Solo última semana completa
-  
-  # Excluir blockchain/crypto SALVO si menciona IA
+  max_age_days: 7
   crypto_exception_keywords:
     - "ai"
     - "artificial intelligence"
@@ -40,13 +38,13 @@ exclusions:
     - "inteligencia artificial"
 
 # ===========================================
-# LÍMITES POR FUENTE
+# LIMITES POR FUENTE
 # ===========================================
 source_limits:
-  max_items_per_source: 3  # Máximo 3 artículos por fuente
+  max_items_per_source: 2
 
 # ===========================================
-# DEDUPLICACIÓN
+# DEDUPLICACION
 # ===========================================
 dedup:
   method: "url_and_title_hash"
@@ -54,7 +52,7 @@ dedup:
   window_days: 7
 
 # ===========================================
-# LÍMITES DE SALIDA
+# LIMITES DE SALIDA
 # ===========================================
 output_limits:
   max_top_stories: 5
@@ -71,7 +69,6 @@ tags:
     - investigacion_tecnica
     - politica_seguridad_sociedad
     - debate_friccion
-
   topics:
     - llm
     - agentes
@@ -82,7 +79,6 @@ tags:
     - robotica
     - infraestructura
     - etica
-
   signals:
     - lanzamiento
     - paper
@@ -93,7 +89,7 @@ tags:
     - tutorial
 
 # ===========================================
-# KEYWORDS -> TAGS AUTOMÁTICOS
+# KEYWORDS -> TAGS AUTOMATICOS
 # ===========================================
 keyword_rules:
   - keywords: ["GPT", "Claude", "Gemini", "Llama", "LLM", "language model", "modelo de lenguaje"]
@@ -102,16 +98,16 @@ keyword_rules:
     assign_topic: agentes
   - keywords: ["RAG", "retrieval", "vector", "embedding", "embeddings"]
     assign_topic: rag
-  - keywords: ["regulation", "regulación", "EU AI Act", "GDPR", "AI Act"]
+  - keywords: ["regulation", "regulacion", "EU AI Act", "GDPR", "AI Act"]
     assign_topic: regulacion
     assign_signal: regulacion
-  - keywords: ["open source", "open-source", "Apache", "MIT license", "código abierto"]
+  - keywords: ["open source", "open-source", "Apache", "MIT license", "codigo abierto"]
     assign_topic: open_source
   - keywords: ["launch", "release", "announces", "anuncia", "lanza", "presenta"]
     assign_signal: lanzamiento
-  - keywords: ["paper", "arxiv", "research", "investigación", "study", "estudio"]
+  - keywords: ["paper", "arxiv", "research", "investigacion", "study", "estudio"]
     assign_signal: paper
-  - keywords: ["breach", "leak", "incident", "hack", "vulnerability", "brecha", "filtración"]
+  - keywords: ["breach", "leak", "incident", "hack", "vulnerability", "brecha", "filtracion"]
     assign_signal: incidente
   - keywords: ["vision", "imagen", "image", "visual", "multimodal"]
     assign_topic: vision
