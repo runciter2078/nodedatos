@@ -39,7 +39,7 @@ jobs:
       - name: Paso 3 - Procesar contenido
         run: python scripts/03_process.py
 
-      - name: Paso 4 - Generar newsletter
+      - name: Paso 4 - Generar y revisar newsletter
         env:
           XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
         run: python scripts/04_generate.py
@@ -63,6 +63,13 @@ jobs:
           name: tweets-semanales
           path: data/output/tweets_*.txt
           retention-days: 30
+
+      - name: Paso 9 - Guardar borrador pre-revision como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: newsletter-borrador
+          path: data/output/newsletter_*_borrador.md
+          retention-days: 14
 
       - name: Commit newsletter a la web
         run: |
