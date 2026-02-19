@@ -1,9 +1,65 @@
 # ===========================================
-# FUENTES RSS (28 total)
+# FUENTES RSS PRINCIPALES (32 total)
 # ===========================================
 rss_sources:
 
-  # --- TIER 1 (fuentes esenciales) ---
+  # --- TIER 1: FUENTES PRIMARIAS (blogs oficiales de empresas/labs) ---
+
+  - id: openai-blog
+    name: "Blog de OpenAI"
+    feed_url: "https://openai.com/blog/rss.xml"
+    tier: 1
+    default_tags: [producto_mercado, investigacion_tecnica]
+
+  - id: anthropic-blog
+    name: "Blog de Anthropic"
+    feed_url: "https://www.anthropic.com/feed.xml"
+    tier: 1
+    default_tags: [investigacion_tecnica, producto_mercado]
+
+  - id: deepmind-blog
+    name: "Google DeepMind Blog"
+    feed_url: "https://deepmind.google/blog/rss.xml"
+    tier: 1
+    default_tags: [investigacion_tecnica]
+
+  - id: google-ai-blog
+    name: "Google AI Blog"
+    feed_url: "https://blog.research.google/feeds/posts/default/-/AI"
+    tier: 1
+    default_tags: [investigacion_tecnica]
+
+  - id: huggingface-blog
+    name: "Blog de Hugging Face"
+    feed_url: "https://huggingface.co/blog/feed.xml"
+    tier: 1
+    default_tags: [investigacion_tecnica, open_source]
+
+  - id: meta-ai-blog
+    name: "Blog de Meta AI"
+    feed_url: "https://ai.meta.com/blog/rss/"
+    tier: 1
+    default_tags: [investigacion_tecnica, open_source]
+
+  - id: microsoft-ai-blog
+    name: "Microsoft AI Blog"
+    feed_url: "https://blogs.microsoft.com/ai/feed/"
+    tier: 1
+    default_tags: [producto_mercado, investigacion_tecnica]
+
+  - id: mistral-blog
+    name: "Blog de Mistral AI"
+    feed_url: "https://mistral.ai/feed.xml"
+    tier: 1
+    default_tags: [investigacion_tecnica, producto_mercado]
+
+  - id: nvidia-ai-blog
+    name: "NVIDIA AI Blog"
+    feed_url: "https://blogs.nvidia.com/feed/"
+    tier: 1
+    default_tags: [investigacion_tecnica, infraestructura]
+
+  # --- TIER 1: ANALISTAS Y NEWSLETTERS DE REFERENCIA ---
 
   - id: the-batch
     name: "The Batch (DeepLearning.AI)"
@@ -16,18 +72,6 @@ rss_sources:
     feed_url: "https://www.technologyreview.com/feed/"
     tier: 1
     default_tags: [investigacion_tecnica, politica_sociedad]
-
-  - id: openai-blog
-    name: "Blog de OpenAI"
-    feed_url: "https://openai.com/blog/rss.xml"
-    tier: 1
-    default_tags: [producto_mercado, investigacion_tecnica]
-
-  - id: simon-willison
-    name: "Simon Willison's Weblog"
-    feed_url: "https://simonwillison.net/atom/everything/"
-    tier: 1
-    default_tags: [investigacion_tecnica, open_source]
 
   - id: interconnects
     name: "Interconnects (Nathan Lambert)"
@@ -59,18 +103,6 @@ rss_sources:
     tier: 1
     default_tags: [investigacion_tecnica]
 
-  - id: deepmind-blog
-    name: "Google DeepMind Blog"
-    feed_url: "https://deepmind.google/blog/rss.xml"
-    tier: 1
-    default_tags: [investigacion_tecnica]
-
-  - id: anthropic-blog
-    name: "Blog de Anthropic"
-    feed_url: "https://www.anthropic.com/feed.xml"
-    tier: 1
-    default_tags: [investigacion_tecnica, producto_mercado]
-
   - id: latent-space
     name: "Latent Space"
     feed_url: "https://www.latent.space/feed"
@@ -89,17 +121,11 @@ rss_sources:
     tier: 1
     default_tags: [debate, politica_sociedad]
 
-  - id: google-ai-blog
-    name: "Google AI Blog"
-    feed_url: "https://blog.research.google/feeds/posts/default/-/AI"
-    tier: 1
-    default_tags: [investigacion_tecnica]
+  # --- TIER 2: FUENTES SECUNDARIAS Y MEDIOS ---
 
-  # --- TIER 2 (fuentes importantes) ---
-
-  - id: huggingface-blog
-    name: "Blog de Hugging Face"
-    feed_url: "https://huggingface.co/blog/feed.xml"
+  - id: simon-willison
+    name: "Simon Willison's Weblog"
+    feed_url: "https://simonwillison.net/atom/everything/"
     tier: 2
     default_tags: [investigacion_tecnica, open_source]
 
@@ -174,6 +200,86 @@ rss_sources:
     feed_url: "https://thealgorithmicbridge.substack.com/feed"
     tier: 2
     default_tags: [debate, politica_sociedad]
+
+# ===========================================
+# FUENTES RSS DE RESPALDO (12 total)
+# Se activan automaticamente si menos de 10
+# fuentes principales devuelven articulos
+# en una semana dada.
+# ===========================================
+backup_rss_sources:
+
+  - id: zdnet-ai
+    name: "ZDNet - AI"
+    feed_url: "https://www.zdnet.com/topic/artificial-intelligence/rss.xml"
+    tier: 2
+    default_tags: [producto_mercado]
+
+  - id: unite-ai
+    name: "Unite.AI"
+    feed_url: "https://www.unite.ai/feed/"
+    tier: 2
+    default_tags: [producto_mercado, investigacion_tecnica]
+
+  - id: towards-data-science
+    name: "Towards Data Science"
+    feed_url: "https://towardsdatascience.com/feed"
+    tier: 2
+    default_tags: [investigacion_tecnica]
+
+  - id: the-ai-ethics-brief
+    name: "The AI Ethics Brief"
+    feed_url: "https://brief.montrealethics.ai/feed"
+    tier: 2
+    default_tags: [politica_sociedad, etica]
+
+  - id: ai-weekly
+    name: "AI Weekly"
+    feed_url: "https://aiweekly.co/feed/"
+    tier: 2
+    default_tags: [producto_mercado]
+
+  - id: machine-learning-mastery
+    name: "Machine Learning Mastery"
+    feed_url: "https://machinelearningmastery.com/feed/"
+    tier: 2
+    default_tags: [investigacion_tecnica]
+
+  - id: deeplearning-blog
+    name: "DeepLearning.AI Blog"
+    feed_url: "https://www.deeplearning.ai/blog/feed/"
+    tier: 2
+    default_tags: [investigacion_tecnica]
+
+  - id: arxiv-cs-ai
+    name: "ArXiv CS.AI (papers recientes)"
+    feed_url: "http://export.arxiv.org/rss/cs.AI"
+    tier: 2
+    default_tags: [investigacion_tecnica]
+
+  - id: the-register-ai
+    name: "The Register - AI/ML"
+    feed_url: "https://www.theregister.com/software/ai_ml/headlines.atom"
+    tier: 2
+    default_tags: [producto_mercado]
+
+  - id: engadget-ai
+    name: "Engadget - AI"
+    feed_url: "https://www.engadget.com/tag/artificial-intelligence/rss.xml"
+    tier: 2
+    default_tags: [producto_mercado]
+
+  - id: semafor-tech
+    name: "Semafor Tech"
+    feed_url: "https://www.semafor.com/feed/tech"
+    tier: 2
+    default_tags: [producto_mercado, politica_sociedad]
+
+  - id: 9to5google-ai
+    name: "9to5Google - AI"
+    feed_url: "https://9to5google.com/guides/google-ai-gemini/feed/"
+    tier: 2
+    default_tags: [producto_mercado]
 
 # ===========================================
 # CUENTAS DE X (15 total)

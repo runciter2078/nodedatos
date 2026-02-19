@@ -41,7 +41,50 @@ exclusions:
 # LIMITES POR FUENTE
 # ===========================================
 source_limits:
+  # Fuentes primarias (blogs oficiales de empresas/labs):
+  # pueden aportar hasta 3 items porque son la fuente original
+  max_items_primary: 3
+
+  # Fuentes secundarias (blogs personales, newsletters de curación):
+  # máximo 2 items para evitar que una sola fuente domine
+  max_items_secondary: 2
+
+  # Fallback: si una fuente no está clasificada, usa este límite
   max_items_per_source: 2
+
+# ===========================================
+# CLASIFICACION DE FUENTES
+# ===========================================
+# Las fuentes primarias son blogs oficiales de empresas o labs
+# que publican sus propios anuncios, papers y lanzamientos.
+# Las secundarias son blogs personales, newsletters de curación
+# o medios que cubren noticias de otros.
+# ===========================================
+source_classification:
+  primary:
+    - openai-blog
+    - anthropic-blog
+    - deepmind-blog
+    - google-ai-blog
+    - huggingface-blog
+    - meta-ai-blog
+    - microsoft-ai-blog
+    - mistral-blog
+    - nvidia-ai-blog
+  secondary:
+    - simon-willison
+    - bensbites
+    - the-decoder
+    - last-week-in-ai
+    - the-rundown-ai
+    - marktechpost
+    - venturebeat-ai
+    - ars-technica-ai
+    - wired-ai
+    - techcrunch
+    - the-verge
+    # Todo lo que no esté en ninguna lista se trata como "mixed"
+    # y usa max_items_per_source (2)
 
 # ===========================================
 # DEDUPLICACION
@@ -59,6 +102,15 @@ output_limits:
   max_radar_items: 8
   max_items_per_section: 4
   max_total_items: 30
+
+# ===========================================
+# MINIMO DE FUENTES RSS ACTIVAS
+# ===========================================
+# Si en una semana menos de este numero de fuentes RSS
+# principales devuelven articulos, el pipeline activa
+# las fuentes de respaldo (backup_rss_sources en sources.yml)
+# ===========================================
+minimum_active_sources: 10
 
 # ===========================================
 # VOCABULARIO DE TAGS
