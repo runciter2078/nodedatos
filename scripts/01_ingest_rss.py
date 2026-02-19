@@ -9,6 +9,10 @@ def load_sources():
     with open("config/sources.yml", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
+def load_rules():
+    with open("config/rules.yml", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
 def get_week_bounds():
     now = datetime.now(timezone.utc)
     week_start = now - timedelta(days=7)
@@ -24,66 +28,112 @@ def parse_date(entry):
                 pass
     return None
 
+def fetch_feed(source, week_start):
+    """Descarga y filtra un feed RSS. Devuelve lista de items canonicos."""
+    items = []
+    try:
+        feed = feedparser.parse(source["feed_url"])
+        for entry in feed.entries:
+            pub_date = parse_date(entry)
+            if pub_date is None:
+                continue
+            if pub_date.tzinfo is None:
+                pub_date = pub_date.replace(tzinfo=timezone.utc)
+            if pub_date < week_start:
+                continue
+
+            content = ""
+            if hasattr(entry, "content"):
+                content = entry.content[0].value
+            elif hasattr(entry, "summary"):
+                content = entry.summary
+
+            item = {
+                "id": f"rss-{source['id']}-{hash(entry.get('link', ''))}",
+                "source_type": "rss",
+                "source_id": source["id"],
+                "source_name": source["name"],
+                "url": entry.get("link", ""),
+                "title": entry.get("title", ""),
+                "published": pub_date.isoformat(),
+                "excerpt": entry.get("summary", "")[:500],
+                "content": content[:3000],
+                "default_tags": source.get("default_tags", []),
+                "assigned_tags": [],
+                "tier": source.get("tier", 2)
+            }
+            items.append(item)
+    except Exception as e:
+        print(f"    ERROR en {source['name']}: {e}")
+
+    return items
+
 def ingest_rss():
     config = load_sources()
+    rules = load_rules()
     week_start, week_end = get_week_bounds()
-    
     run_id = datetime.now(timezone.utc).strftime("%Y-W%V")
-    items = []
 
-    for source in config.get("rss_sources", []):
+    main_sources = config.get("rss_sources", [])
+    backup_sources = config.get("backup_rss_sources", [])
+    minimum_active = rules.get("minimum_active_sources", 10)
+
+    # --- Paso 1: Ingestar fuentes principales ---
+    all_items = []
+    active_source_count = 0
+
+    print(f"  Fuentes principales: {len(main_sources)}")
+    for source in main_sources:
         print(f"  Procesando: {source['name']}")
-        try:
-            feed = feedparser.parse(source["feed_url"])
-            for entry in feed.entries:
-                pub_date = parse_date(entry)
-                if pub_date is None:
-                    continue
-                if pub_date.tzinfo is None:
-                    pub_date = pub_date.replace(tzinfo=timezone.utc)
-                if pub_date < week_start:
-                    continue
+        source_items = fetch_feed(source, week_start)
+        if source_items:
+            active_source_count += 1
+        all_items.extend(source_items)
+        print(f"    -> {len(source_items)} articulos esta semana")
 
-                content = ""
-                if hasattr(entry, "content"):
-                    content = entry.content[0].value
-                elif hasattr(entry, "summary"):
-                    content = entry.summary
+    print(f"\n  Fuentes principales activas: {active_source_count}/{len(main_sources)}")
+    print(f"  Articulos de fuentes principales: {len(all_items)}")
 
-                item = {
-                    "id": f"rss-{source['id']}-{hash(entry.get('link', ''))}",
-                    "source_type": "rss",
-                    "source_id": source["id"],
-                    "source_name": source["name"],
-                    "url": entry.get("link", ""),
-                    "title": entry.get("title", ""),
-                    "published": pub_date.isoformat(),
-                    "excerpt": entry.get("summary", "")[:500],
-                    "content": content[:3000],
-                    "default_tags": source.get("default_tags", []),
-                    "assigned_tags": [],
-                    "tier": source.get("tier", 2)
-                }
-                items.append(item)
-        except Exception as e:
-            print(f"    ERROR en {source['name']}: {e}")
+    # --- Paso 2: Activar respaldo si hay pocas fuentes activas ---
+    if active_source_count < minimum_active and backup_sources:
+        needed = minimum_active - active_source_count
+        print(f"\n  RESPALDO: Solo {active_source_count} fuentes activas (minimo: {minimum_active})")
+        print(f"  Activando hasta {len(backup_sources)} fuentes de respaldo...")
 
+        backup_active = 0
+        for source in backup_sources:
+            print(f"  [backup] Procesando: {source['name']}")
+            source_items = fetch_feed(source, week_start)
+            if source_items:
+                backup_active += 1
+            all_items.extend(source_items)
+            print(f"    -> {len(source_items)} articulos esta semana")
+
+        print(f"  Fuentes de respaldo activas: {backup_active}/{len(backup_sources)}")
+        print(f"  Total fuentes activas: {active_source_count + backup_active}")
+    else:
+        print(f"  Respaldo no necesario ({active_source_count} >= {minimum_active})")
+
+    # --- Paso 3: Guardar resultado ---
     output = {
         "meta": {
             "week_start": week_start.isoformat(),
             "week_end": week_end.isoformat(),
             "run_id": run_id,
-            "source_type": "rss"
+            "source_type": "rss",
+            "main_sources_total": len(main_sources),
+            "main_sources_active": active_source_count,
+            "backup_activated": active_source_count < minimum_active
         },
-        "items": items
+        "items": all_items
     }
 
     os.makedirs("data/raw", exist_ok=True)
     with open("data/raw/rss_items.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"\nRSS: {len(items)} articulos guardados en data/raw/rss_items.json")
-    return items
+    print(f"\nRSS: {len(all_items)} articulos guardados en data/raw/rss_items.json")
+    return all_items
 
 if __name__ == "__main__":
     print("=== Ingesta RSS ===")
