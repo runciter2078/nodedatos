@@ -49,6 +49,54 @@ def apply_exclusions(items, rules):
         result.append(item)
     return result
 
+def apply_source_limits(items, rules):
+    """Aplica limites diferenciados por tipo de fuente (primaria/secundaria)."""
+    source_classification = rules.get("source_classification", {})
+    primary_ids = set(source_classification.get("primary", []))
+    secondary_ids = set(source_classification.get("secondary", []))
+
+    source_limits = rules.get("source_limits", {})
+    max_primary = source_limits.get("max_items_primary", 3)
+    max_secondary = source_limits.get("max_items_secondary", 2)
+    max_default = source_limits.get("max_items_per_source", 2)
+
+    source_count = {}
+    result = []
+
+    for item in items:
+        source_id = item.get("source_id", "")
+        count = source_count.get(source_id, 0)
+
+        # Determinar limite segun clasificacion
+        if source_id in primary_ids:
+            limit = max_primary
+        elif source_id in secondary_ids:
+            limit = max_secondary
+        else:
+            limit = max_default
+
+        if count >= limit:
+            continue
+
+        source_count[source_id] = count + 1
+        result.append(item)
+
+    # Log de fuentes limitadas
+    for source_id, count in sorted(source_count.items(), key=lambda x: x[1], reverse=True):
+        if source_id in primary_ids:
+            tipo = "primaria"
+            limit = max_primary
+        elif source_id in secondary_ids:
+            tipo = "secundaria"
+            limit = max_secondary
+        else:
+            tipo = "mixta"
+            limit = max_default
+        if count >= limit:
+            print(f"    {source_id} ({tipo}): {count} items (limite: {limit})")
+
+    return result
+
 def apply_keyword_rules(items, rules):
     keyword_rules = rules.get("keyword_rules", [])
     for item in items:
@@ -88,7 +136,13 @@ def process():
     for item in items:
         item["priority"] = calculate_priority(item, rules)
 
+    # Ordenar por prioridad ANTES de aplicar limites por fuente
+    # para que se queden los items mas relevantes de cada fuente
     items = sorted(items, key=lambda x: x.get("priority", 0), reverse=True)
+
+    print(f"  Aplicando limites por fuente (primaria/secundaria)...")
+    items = apply_source_limits(items, rules)
+    print(f"  Tras limites por fuente: {len(items)}")
 
     limits = rules.get("output_limits", {})
     max_total = limits.get("max_total_items", 30)
